@@ -8,22 +8,44 @@
 
 /* Begin PBXBuildFile section */
 		012EFE2C1DD7533800480703 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012EFE2B1DD7533800480703 /* AppDelegate.swift */; };
-		012EFE2E1DD7533800480703 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012EFE2D1DD7533800480703 /* ViewController.swift */; };
+		012EFE2E1DD7533800480703 /* FriendsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012EFE2D1DD7533800480703 /* FriendsController.swift */; };
 		012EFE311DD7533800480703 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012EFE2F1DD7533800480703 /* Main.storyboard */; };
-		012EFE341DD7533800480703 /* FBMessenger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 012EFE321DD7533800480703 /* FBMessenger.xcdatamodeld */; };
 		012EFE361DD7533800480703 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 012EFE351DD7533800480703 /* Assets.xcassets */; };
 		012EFE391DD7533800480703 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 012EFE371DD7533800480703 /* LaunchScreen.storyboard */; };
+		012EFE441DD757EE00480703 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012EFE431DD757EE00480703 /* BaseCell.swift */; };
+		012EFE461DD7582700480703 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012EFE451DD7582700480703 /* MessageCell.swift */; };
+		012EFE491DD758C800480703 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012EFE481DD758C800480703 /* Extensions.swift */; };
+		012EFE4B1DD78DD400480703 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012EFE4A1DD78DD400480703 /* Models.swift */; };
+		012EFE771DD857DF00480703 /* FBMessenger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 012EFE751DD857DF00480703 /* FBMessenger.xcdatamodeld */; };
+		012EFE7C1DD8591500480703 /* Friend+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012EFE781DD8591500480703 /* Friend+CoreDataClass.swift */; };
+		012EFE7D1DD8591500480703 /* Friend+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012EFE791DD8591500480703 /* Friend+CoreDataProperties.swift */; };
+		012EFE7E1DD8591500480703 /* Message+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012EFE7A1DD8591500480703 /* Message+CoreDataClass.swift */; };
+		012EFE7F1DD8591500480703 /* Message+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012EFE7B1DD8591500480703 /* Message+CoreDataProperties.swift */; };
+		012EFE811DD8D3CA00480703 /* ChatLogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012EFE801DD8D3CA00480703 /* ChatLogController.swift */; };
+		012EFE831DD8D58500480703 /* ChatLogMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012EFE821DD8D58500480703 /* ChatLogMessageCell.swift */; };
+		012EFE851DD8D96200480703 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 012EFE841DD8D96200480703 /* CustomTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		012EFE281DD7533800480703 /* FBMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FBMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		012EFE2B1DD7533800480703 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		012EFE2D1DD7533800480703 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		012EFE2D1DD7533800480703 /* FriendsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsController.swift; sourceTree = "<group>"; };
 		012EFE301DD7533800480703 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		012EFE331DD7533800480703 /* FBMessenger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FBMessenger.xcdatamodel; sourceTree = "<group>"; };
 		012EFE351DD7533800480703 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		012EFE381DD7533800480703 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		012EFE3A1DD7533800480703 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		012EFE431DD757EE00480703 /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
+		012EFE451DD7582700480703 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		012EFE481DD758C800480703 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		012EFE4A1DD78DD400480703 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		012EFE761DD857DF00480703 /* FBMessenger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FBMessenger.xcdatamodel; sourceTree = "<group>"; };
+		012EFE781DD8591500480703 /* Friend+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataClass.swift"; sourceTree = "<group>"; };
+		012EFE791DD8591500480703 /* Friend+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		012EFE7A1DD8591500480703 /* Message+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataClass.swift"; sourceTree = "<group>"; };
+		012EFE7B1DD8591500480703 /* Message+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		012EFE801DD8D3CA00480703 /* ChatLogController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatLogController.swift; sourceTree = "<group>"; };
+		012EFE821DD8D58500480703 /* ChatLogMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatLogMessageCell.swift; sourceTree = "<group>"; };
+		012EFE841DD8D96200480703 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +78,66 @@
 		012EFE2A1DD7533800480703 /* FBMessenger */ = {
 			isa = PBXGroup;
 			children = (
+				012EFE471DD758B000480703 /* Helpers */,
+				012EFE421DD757DC00480703 /* Controller */,
+				012EFE411DD757D600480703 /* View */,
+				012EFE401DD757D100480703 /* Model */,
 				012EFE2B1DD7533800480703 /* AppDelegate.swift */,
-				012EFE2D1DD7533800480703 /* ViewController.swift */,
 				012EFE2F1DD7533800480703 /* Main.storyboard */,
 				012EFE351DD7533800480703 /* Assets.xcassets */,
 				012EFE371DD7533800480703 /* LaunchScreen.storyboard */,
 				012EFE3A1DD7533800480703 /* Info.plist */,
-				012EFE321DD7533800480703 /* FBMessenger.xcdatamodeld */,
+				012EFE751DD857DF00480703 /* FBMessenger.xcdatamodeld */,
 			);
 			path = FBMessenger;
+			sourceTree = "<group>";
+		};
+		012EFE401DD757D100480703 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				012EFE4A1DD78DD400480703 /* Models.swift */,
+				012EFE781DD8591500480703 /* Friend+CoreDataClass.swift */,
+				012EFE7A1DD8591500480703 /* Message+CoreDataClass.swift */,
+				012EFE6C1DD856E100480703 /* Generated */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		012EFE411DD757D600480703 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				012EFE431DD757EE00480703 /* BaseCell.swift */,
+				012EFE451DD7582700480703 /* MessageCell.swift */,
+				012EFE821DD8D58500480703 /* ChatLogMessageCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		012EFE421DD757DC00480703 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				012EFE2D1DD7533800480703 /* FriendsController.swift */,
+				012EFE801DD8D3CA00480703 /* ChatLogController.swift */,
+				012EFE841DD8D96200480703 /* CustomTabBarController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		012EFE471DD758B000480703 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				012EFE481DD758C800480703 /* Extensions.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		012EFE6C1DD856E100480703 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				012EFE791DD8591500480703 /* Friend+CoreDataProperties.swift */,
+				012EFE7B1DD8591500480703 /* Message+CoreDataProperties.swift */,
+			);
+			name = Generated;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,9 +213,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				012EFE2E1DD7533800480703 /* ViewController.swift in Sources */,
+				012EFE811DD8D3CA00480703 /* ChatLogController.swift in Sources */,
+				012EFE7F1DD8591500480703 /* Message+CoreDataProperties.swift in Sources */,
+				012EFE441DD757EE00480703 /* BaseCell.swift in Sources */,
+				012EFE7C1DD8591500480703 /* Friend+CoreDataClass.swift in Sources */,
+				012EFE7D1DD8591500480703 /* Friend+CoreDataProperties.swift in Sources */,
+				012EFE491DD758C800480703 /* Extensions.swift in Sources */,
+				012EFE2E1DD7533800480703 /* FriendsController.swift in Sources */,
+				012EFE771DD857DF00480703 /* FBMessenger.xcdatamodeld in Sources */,
+				012EFE851DD8D96200480703 /* CustomTabBarController.swift in Sources */,
 				012EFE2C1DD7533800480703 /* AppDelegate.swift in Sources */,
-				012EFE341DD7533800480703 /* FBMessenger.xcdatamodeld in Sources */,
+				012EFE831DD8D58500480703 /* ChatLogMessageCell.swift in Sources */,
+				012EFE461DD7582700480703 /* MessageCell.swift in Sources */,
+				012EFE4B1DD78DD400480703 /* Models.swift in Sources */,
+				012EFE7E1DD8591500480703 /* Message+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,18 +390,19 @@
 				012EFE3F1DD7533800480703 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		012EFE321DD7533800480703 /* FBMessenger.xcdatamodeld */ = {
+		012EFE751DD857DF00480703 /* FBMessenger.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				012EFE331DD7533800480703 /* FBMessenger.xcdatamodel */,
+				012EFE761DD857DF00480703 /* FBMessenger.xcdatamodel */,
 			);
-			currentVersion = 012EFE331DD7533800480703 /* FBMessenger.xcdatamodel */;
+			currentVersion = 012EFE761DD857DF00480703 /* FBMessenger.xcdatamodel */;
 			path = FBMessenger.xcdatamodeld;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */
