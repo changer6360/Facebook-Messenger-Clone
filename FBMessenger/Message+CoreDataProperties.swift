@@ -2,7 +2,7 @@
 //  Message+CoreDataProperties.swift
 //  FBMessenger
 //
-//  Created by Tihomir Videnov on 11/13/16.
+//  Created by Tihomir Videnov on 11/16/16.
 //  Copyright © 2016 Tihomir Videnov. All rights reserved.
 //
 
@@ -16,8 +16,9 @@ extension Message {
         return NSFetchRequest<Message>(entityName: "Message");
     }
 
-    @NSManaged public var text: String?
     @NSManaged public var date: NSDate?
+    @NSManaged public var text: String?
+    @NSManaged public var isSender: Bool
     @NSManaged public var friend: Friend?
 
 }

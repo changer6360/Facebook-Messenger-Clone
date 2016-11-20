@@ -38,11 +38,6 @@ extension FriendsController {
         mark.name = "Mark Zuckerberg"
         mark.profileImage = "zuckprofile"
         
-        //let steve = NSEntityDescription.insertNewObject(forEntityName: "Friend", into: context) as! Friend
-        let steve = Friend(context: context)
-        steve.name = "Steve Jobs"
-        steve.profileImage = "steve_profile"
-        
         let donald = Friend(context: context)
         donald.name = "Donald Trump"
         donald.profileImage = "donald_trump_profile"
@@ -55,26 +50,50 @@ extension FriendsController {
         hillary.name = "Hillary Clinton"
         hillary.profileImage = "hillary_profile"
         
-        createMessageWithText(text: "Hey, nice to see you here...", friend: mark, minutesAgo: 1)
+        FriendsController.createMessageWithText(text: "Hey, nice to see you here...", friend: mark, minutesAgo: 1)
         
-        createMessageWithText(text: "Good morning...", friend: steve, minutesAgo: 3)
-        createMessageWithText(text: "Hello, how are you?", friend: steve,minutesAgo: 2)
-        createMessageWithText(text: "Great, thanks for asking!", friend: steve, minutesAgo: 1)
+        createSteveMessages()
         
-        createMessageWithText(text: "I am the new president of USA!", friend: donald, minutesAgo: 5)
-        createMessageWithText(text: "Love, Pease and Joy", friend: gandhi, minutesAgo: 60 * 24)
-        createMessageWithText(text: "Please vote for me!", friend: hillary, minutesAgo: 8 * 60 * 24)
+        FriendsController.createMessageWithText(text: "I am the new president of USA!", friend: donald, minutesAgo: 5)
+        FriendsController.createMessageWithText(text: "Love, Pease and Joy", friend: gandhi, minutesAgo: 60 * 24)
+        FriendsController.createMessageWithText(text: "Please vote for me!", friend: hillary, minutesAgo: 8 * 60 * 24)
         
        ad.saveContext()
         
         loadData()
     }
     
-    func createMessageWithText(text: String, friend: Friend, minutesAgo: Double) {
+    fileprivate func createSteveMessages() {
+        
+        let steve = Friend(context: context)
+        steve.name = "Steve Jobs"
+        steve.profileImage = "steve_profile"
+        
+        FriendsController.createMessageWithText(text: "Good morning...", friend: steve, minutesAgo: 3)
+        FriendsController.createMessageWithText(text: "Hello, how are you? Hope you are having a good morning!", friend: steve,minutesAgo: 2)
+        FriendsController.createMessageWithText(text: "Did you see the new Macbook Pro's with the new touch bar? They are great, aren't they?", friend: steve, minutesAgo: 1)
+        
+        //response message
+        FriendsController.createMessageWithText(text: "Yea, great!", friend: steve, minutesAgo: 1, isSender: true)
+        
+        FriendsController.createMessageWithText(text: "I like your enthusiasm! We made them with great attention for detail", friend: steve, minutesAgo: 1)
+        
+        //response message
+        FriendsController.createMessageWithText(text: "I can totally see that :)", friend: steve, minutesAgo: 1, isSender: true)
+        
+        FriendsController.createMessageWithText(text: "Also, our AirPods should come out soon and you can check them out", friend: steve, minutesAgo: 1)
+        
+        //response message
+        FriendsController.createMessageWithText(text: "I think I will buy one pair", friend: steve, minutesAgo: 1, isSender: true)
+    }
+    
+    static func createMessageWithText(text: String, friend: Friend, minutesAgo: Double, isSender: Bool = false) -> Message {
         let message = Message(context: context)
         message.friend = friend
         message.text = text
         message.date = NSDate().addingTimeInterval(-minutesAgo * 60)
+        message.isSender = isSender
+        return message
     }
     
     func loadData() {
@@ -88,7 +107,7 @@ extension FriendsController {
             messages = [Message]()
             
             for friend in friends {
-            print(friend.name)
+//            print(friend.name)
                 
                 fetchRequest.sortDescriptors = [dateSort]
                 fetchRequest.predicate = NSPredicate(format: "friend.name = %@", friend.name!)
