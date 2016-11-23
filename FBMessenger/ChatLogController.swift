@@ -9,20 +9,20 @@
 import UIKit
 import CoreData
 
-class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate {
     
     var messages: [Message]?
     
     var bottomContraint: NSLayoutConstraint?
+    
+    var blockOperations = [BlockOperation]()
     
     fileprivate let cellId = "cellId"
     
     var friend: Friend? {
         didSet {
             navigationItem.title = friend?.name
-//            messages = friend?.messages?.allObjects as? [Message]
-//            
-//            messages = messages?.sorted(by: {$0.date!.compare($1.date! as Date) == .orderedAscending})
+
         }
     }
         lazy var fetchedResultsController: NSFetchedResultsController<Message> = {
@@ -30,6 +30,7 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         fetchRequest.predicate = NSPredicate(format: "friend.name = %@", self.friend!.name!)
         let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        frc.delegate = self
         return frc
     }()
     
@@ -91,9 +92,33 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: .UIKeyboardWillHide, object: nil)
     }
     
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        if type == .insert {
+            blockOperations.append(BlockOperation(block: { 
+                self.collectionView?.insertItems(at: [newIndexPath!])
+            }))
+            
+            //collectionView?.scrollToItem(at: newIndexPath!, at: .bottom, animated: true)
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        collectionView?.performBatchUpdates({ 
+            
+            for operation in self.blockOperations {
+                operation.start()
+            }
+            
+        }, completion: { (completed) in
+            let lastItem = self.fetchedResultsController.sections![0].numberOfObjects - 1
+            let indexPath = IndexPath(item: lastItem, section: 0)
+            self.collectionView?.scrollToItem(at: indexPath, at: .bottom, animated: true)
+        })
+    }
+    
     func simulate() {
-//        
-//        let message = FriendsController.createMessageWithText(text: "Simulated text message", friend: friend!, minutesAgo: 1)
+     
+        FriendsController.createMessageWithText(text: "Simulated text message", friend: friend!, minutesAgo: 1)
 //        do {
 //            try context.save()
 //            
@@ -149,8 +174,9 @@ class ChatLogController: UICollectionViewController, UICollectionViewDelegateFlo
             }, completion: { (completed) in
                 
                 if isKeyboardShowing {
-//                    let indexPath = IndexPath(item: (self.messages?.count)! - 1, section: 0)
-//                    self.collectionView?.scrollToItem(at: indexPath, at: .bottom, animated: true)
+                    let lastItem = self.fetchedResultsController.sections![0].numberOfObjects - 1
+                    let indexPath = IndexPath(item: lastItem, section: 0)
+                    self.collectionView?.scrollToItem(at: indexPath, at: .bottom, animated: true)
                     
                 }
             })

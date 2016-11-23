@@ -2,7 +2,7 @@
 //  Friend+CoreDataClass.swift
 //  FBMessenger
 //
-//  Created by Tihomir Videnov on 11/13/16.
+//  Created by Tihomir Videnov on 11/20/16.
 //  Copyright © 2016 Tihomir Videnov. All rights reserved.
 //
 

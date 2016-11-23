@@ -22,7 +22,7 @@ class ChatLogMessageCell: BaseCell {
     let textBubleView: UIView = {
        let view = UIView()
 //        view.backgroundColor = UIColor(white: 0.95, alpha: 1)
-        view.layer.cornerRadius = 15
+        view.layer.cornerRadius = view.frame.height / 2
         view.layer.masksToBounds = true
         return view
     }()
@@ -30,7 +30,7 @@ class ChatLogMessageCell: BaseCell {
     let profileImageView: UIImageView = {
        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 15
+        imageView.layer.cornerRadius = imageView.frame.width / 2
         imageView.layer.masksToBounds = true
         return imageView
     }()

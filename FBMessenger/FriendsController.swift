@@ -7,12 +7,24 @@
 //
 
 import UIKit
+import CoreData
 
-class FriendsController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class FriendsController: UICollectionViewController, UICollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate {
     
     fileprivate let cellId = "cellId"
     
-    var messages: [Message]?
+    var blockOperations = [BlockOperation]()
+    
+    //var messages: [Message]?
+    
+    lazy var fetchedResultsController: NSFetchedResultsController<Friend> = {
+       let fetchRequest  = NSFetchRequest<Friend>(entityName: "Friend")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastMessage.date", ascending: false)]
+        fetchRequest.predicate = NSPredicate(format: "lastMessage != nil")
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        frc.delegate = self
+        return frc
+    }()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -30,10 +42,51 @@ class FriendsController: UICollectionViewController, UICollectionViewDelegateFlo
         collectionView?.register(MessageCell.self, forCellWithReuseIdentifier: cellId)
         
         setupData()
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch let err {
+            print(err)
+        }
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Mark", style: .plain, target: self, action: #selector(addMark))
+    }
+    
+    func addMark() {
+        let mark = Friend(context: context)
+        mark.name = "Mark Zuckerberg"
+        mark.profileImage = "zuckprofile"
+        FriendsController.createMessageWithText(text: "Hey, nice to see you here...", friend: mark, minutesAgo: 1)
+        
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        if type == .insert {
+            blockOperations.append(BlockOperation(block: {
+                self.collectionView?.insertItems(at: [newIndexPath!])
+            }))
+            
+            //collectionView?.scrollToItem(at: newIndexPath!, at: .bottom, animated: true)
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        collectionView?.performBatchUpdates({
+            
+            for operation in self.blockOperations {
+                operation.start()
+            }
+            
+        }, completion: { (completed) in
+            let lastItem = self.fetchedResultsController.sections![0].numberOfObjects - 1
+            let indexPath = IndexPath(item: lastItem, section: 0)
+            self.collectionView?.scrollToItem(at: indexPath, at: .bottom, animated: true)
+        })
     }
 
+
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let count = messages?.count {
+        if let count = fetchedResultsController.sections?[section].numberOfObjects {
             return count
         }
         return 0
@@ -42,10 +95,10 @@ class FriendsController: UICollectionViewController, UICollectionViewDelegateFlo
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MessageCell
         
-        if let message = messages?[indexPath.item] {
-            cell.message = message
-        }
-        
+        let friend = fetchedResultsController.object(at: indexPath) as! Friend
+
+        cell.message = friend.lastMessage
+
         return cell
     }
 
@@ -56,7 +109,9 @@ class FriendsController: UICollectionViewController, UICollectionViewDelegateFlo
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let layout = UICollectionViewFlowLayout()
         let controller = ChatLogController(collectionViewLayout: layout)
-        controller.friend = messages?[indexPath.item].friend
+        
+        let friend = fetchedResultsController.object(at: indexPath) as! Friend
+        controller.friend = friend
         navigationController?.pushViewController(controller, animated: true)
     }
     
