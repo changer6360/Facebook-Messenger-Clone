@@ -70,21 +70,21 @@ extension FriendsController {
         steve.profileImage = "steve_profile"
         
         FriendsController.createMessageWithText(text: "Good morning...", friend: steve, minutesAgo: 3)
-        FriendsController.createMessageWithText(text: "Hello, how are you? Hope you are having a good morning!", friend: steve,minutesAgo: 2)
+        FriendsController.createMessageWithText(text: "Hello, how are you?", friend: steve,minutesAgo: 2)
         FriendsController.createMessageWithText(text: "Did you see the new Macbook Pro's with the new touch bar? They are great, aren't they?", friend: steve, minutesAgo: 1)
         
         //response message
-        FriendsController.createMessageWithText(text: "Yea, great!", friend: steve, minutesAgo: 1, isSender: true)
+        FriendsController.createMessageWithText(text: "Yes, they are great!", friend: steve, minutesAgo: 1, isSender: true)
         
-        FriendsController.createMessageWithText(text: "I like your enthusiasm! We made them with great attention for detail", friend: steve, minutesAgo: 1)
-        
-        //response message
-        FriendsController.createMessageWithText(text: "I can totally see that :)", friend: steve, minutesAgo: 1, isSender: true)
-        
-        FriendsController.createMessageWithText(text: "Also, our AirPods should come out soon and you can check them out", friend: steve, minutesAgo: 1)
+        FriendsController.createMessageWithText(text: "Will you buy one?", friend: steve, minutesAgo: 1)
         
         //response message
-        FriendsController.createMessageWithText(text: "I think I will buy one pair", friend: steve, minutesAgo: 1, isSender: true)
+        FriendsController.createMessageWithText(text: "Well, it is a bit expenssive but I am considering it", friend: steve, minutesAgo: 1, isSender: true)
+        
+        FriendsController.createMessageWithText(text: "You know, great quallity comes with a price", friend: steve, minutesAgo: 1)
+        
+        //response message
+        FriendsController.createMessageWithText(text: "True, but...", friend: steve, minutesAgo: 1, isSender: true)
     }
     
     static func createMessageWithText(text: String, friend: Friend, minutesAgo: Double, isSender: Bool = false) -> Message {
