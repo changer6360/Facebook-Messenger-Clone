@@ -5,4 +5,4 @@ Facebook Messenger - Swift 3
 - CoreData
 - no storyboards
 
-![Screen Varian1](https://github.com/changer6360/facebook-messenger-clone/blob/master/screens/main.png)
+![Screen Varian1](https://github.com/changer6360/Facebook-Messenger-Clone/blob/master/screenshots/main.png)
